@@ -1,4 +1,4 @@
-const Migrations = artifacts.require("Payment");
+const Migrations = artifacts.require("StcToken");
 
 module.exports = function (deployer) {
   deployer.deploy(Migrations);
