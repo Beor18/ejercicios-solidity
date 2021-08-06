@@ -27,7 +27,8 @@ async function getPaymendId(req, res, next) {
 async function getItemUrl(req, res) {
   try {
     //1. verify paymentId exist in db and has been paid
-    const payment = await Payment.findOne({ id: req.body.paymentId });
+    // ¡¡¡¡ VER ERROR EN ESTE CONST PAYMENT !!!!
+    const payment = await Payment.findOne({ id: req.params.paymentId });
     console.log("fernando payment >>>> ", payment);
     //2. return url to download item
     if (payment && payment.paid === true) {
