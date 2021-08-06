@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 
 const ethers = require("ethers");
 const PaymentProcessor = require("../frontend/src/contracts/PaymentProcessor.json");
-const { Payment } = require("./models/Payment");
 
 const app = express();
 const item = require("./routes/item/item");
