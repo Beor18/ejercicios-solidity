@@ -1,21 +1,22 @@
 const { Payment } = require("../models/Payment");
 
-const items = {
-  1: { id: 1, url: "http://UrlToDownloadItem1" },
-  2: { id: 2, url: "http://UrlToDownloadItem2" },
-};
+const items = [
+  { id: 1, url: "http://UrlToDownloadItem1" },
+  { id: 2, url: "http://UrlToDownloadItem2" },
+];
 
 async function getPaymendId(req, res, next) {
   try {
-    //1. generate paymentId randomly
+
     const paymentId = (Math.random() * 10000).toFixed(0);
-    //2. save paymentId + itemId in mongo
-    await new Payment({
+    const paymentData = await new Payment({
       id: paymentId,
       itemId: req.params.itemId,
-      paid: false,
+      paid: true,
     });
-    //3. return paymentId to sender
+
+    paymentData.save();
+
     res.status(200).json({
       paymentId,
     });
@@ -27,17 +28,15 @@ async function getPaymendId(req, res, next) {
 async function getItemUrl(req, res) {
   try {
     //1. verify paymentId exist in db and has been paid
-    // ¡¡¡¡ VER ERROR EN ESTE CONST PAYMENT !!!!
-    const payment = await Payment.findOne({ id: req.params.paymentId });
-    console.log("fernando payment >>>> ", payment);
+    const payment = await Payment.findOne({id: req.params.paymentId});
     //2. return url to download item
     if (payment && payment.paid === true) {
       res.status(200).json({
-        url: items[payment.itemId].url,
+        url: items && items[payment.itemId] && items[payment.itemId].url,
       });
     } else {
-      res.status(200).json({
-        url: "",
+      res.status(400).json({
+        message: "Ups hubo un error!",
       });
     }
   } catch (error) {

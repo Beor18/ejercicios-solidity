@@ -7,6 +7,7 @@ const PaymentProcessor = require("../frontend/src/contracts/PaymentProcessor.jso
 
 const app = express();
 const item = require("./routes/item/item");
+const config = require("./db");
 
 
 app.use(cors());
