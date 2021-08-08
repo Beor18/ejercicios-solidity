@@ -1,3 +1,9 @@
+### Raíz
+```sh
+$ truffle develop
+$ migrate or migrate --reset
+```
+
 ### Frontend
 ```sh
 $ cd /frontend

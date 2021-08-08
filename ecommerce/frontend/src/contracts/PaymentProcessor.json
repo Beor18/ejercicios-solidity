@@ -59,7 +59,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -72,7 +73,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -4503,46 +4505,15 @@
   },
   "networks": {
     "5777": {
-      "events": {
-        "0x78eaebe37a28490ff43ed0e95bdc47de1587156ac0069b652e1d2d9f42464e98": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "address",
-              "name": "payer",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "amount",
-              "type": "uint256"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "paymentId",
-              "type": "uint256"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "date",
-              "type": "uint256"
-            }
-          ],
-          "name": "PaymentDone",
-          "type": "event"
-        }
-      },
+      "events": {},
       "links": {},
-      "address": "0x63569cbe2609D35f8822B6217737922537785C5d",
-      "transactionHash": "0x96ce0bb54047e7099f2675d66a166b366f42c6ccd08a1d2e69ee791e584af61e"
+      "address": "0x36528E42df5bdE1D756e49d2017c1F88167B684E",
+      "transactionHash": "0xf4b5230b6229d95ebddd5a8b83da9bd6f252babf5c50cedfda393d6525d56d71"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-04T22:52:24.811Z",
+  "updatedAt": "2021-08-08T17:10:47.921Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

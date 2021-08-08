@@ -10,12 +10,12 @@ const ITEMS = [
   {
     id: 1,
     name: "Item 1",
-    price: ethers.utils.parseEther("100").toString() / 1000000000000000000,
+    price: ethers.utils.parseEther("100") / 1000000000000000000,
   },
   {
     id: 2,
     name: "Item 2",
-    price: ethers.utils.parseEther("200").toString() / 1000000000000000000,
+    price: ethers.utils.parseEther("200") / 1000000000000000000,
   },
 ];
 

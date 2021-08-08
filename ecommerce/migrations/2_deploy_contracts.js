@@ -11,8 +11,8 @@ module.exports = async function (deployer, network, addresses) {
 
     await deployer.deploy(PaymentProcessor, admin, dai.address);
   } else {
-    const ADMIN_ADDRESS = '';
-    const DAI_ADDRESS = '';
+    const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS || '';
+    const DAI_ADDRESS = process.env.DAI_ADDRESS || '';
     await deployer.deploy(PaymentProcessor, ADMIN_ADDRESS, DAI_ADDRESS);
   }
 };
