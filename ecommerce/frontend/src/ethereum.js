@@ -1,6 +1,6 @@
 import { ethers, Contract } from 'ethers';
 import PaymentProcessor from './contracts/PaymentProcessor.json';
-import Dai from './contracts/Dai.json';
+import Ubi from './contracts/Ubi.json';
 
 const getBlockchain = () =>
   new Promise((resolve, reject) => {
@@ -17,15 +17,15 @@ const getBlockchain = () =>
           signer
         );
 
-        const dai = new Contract(
-          Dai.networks[window.ethereum.networkVersion].address, //for mainnet and public testnet replace by address of already deployed dai token
-          Dai.abi,
+        const ubi = new Contract(
+          Ubi.networks[window.ethereum.networkVersion].address,
+          Ubi.abi,
           signer
         );
 
-        resolve({provider, paymentProcessor, dai});
+        resolve({provider, paymentProcessor, ubi, signerAddress});
       }
-      resolve({provider: undefined, paymentProcessor: undefined, dai: undefined});
+      resolve({provider: undefined, paymentProcessor: undefined, ubi: undefined, signerAddress: undefined});
     });
   });
 

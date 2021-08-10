@@ -19,18 +19,18 @@ const ITEMS = [
   },
 ];
 
-const Store = ({ paymentProcessor, dai }) => {
+const Store = ({ paymentProcessor, ubi, signerAddress }) => {
   const buy = async (item) => {
     const response1 = await axios.get(`${API_URL}/api/getPaymentId/${item.id}`);
-
-    const tx1 = await dai.approve(paymentProcessor.address, item.price);
+    
+    const tx1 = await ubi.approve(paymentProcessor.address, item.price);
     await tx1.wait();
 
     const tx2 = await paymentProcessor.pay(
       item.price,
       response1.data.paymentId
     );
-    const receipt = await tx2.wait();
+    await tx2.wait();
 
     await new Promise((resolve) => setTimeout(resolve, 5000));
     const response2 = await axios.get(
@@ -52,7 +52,12 @@ const Store = ({ paymentProcessor, dai }) => {
     );
   });
 
-  return <ul className="list-group">{newList}</ul>;
+  return (
+    <div>
+      <h4>Tu dirección de cuenta es: {signerAddress} </h4>
+      <ul className="list-group">{newList}</ul>
+    </div>
+  );
 };
 
 export default Store;

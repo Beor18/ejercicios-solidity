@@ -1,18 +1,18 @@
-const Dai = artifacts.require('Dai.sol');
+const Ubi = artifacts.require('Ubi.sol');
 const PaymentProcessor = artifacts.require('PaymentProcessor.sol');
 
 module.exports = async function (deployer, network, addresses) {
   const [admin, payer, _] = addresses;
 
   if(network == 'develop') {
-    await deployer.deploy(Dai);
-    const dai = await Dai.deployed();
-    await dai.faucet(payer, web3.utils.toWei('10000')); 
+    await deployer.deploy(Ubi);
+    const ubi = await Ubi.deployed();
+    await ubi.faucet(payer, web3.utils.toWei('10000')); 
 
-    await deployer.deploy(PaymentProcessor, admin, dai.address);
+    await deployer.deploy(PaymentProcessor, admin, ubi.address);
   } else {
     const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS || '';
-    const DAI_ADDRESS = process.env.DAI_ADDRESS || '';
-    await deployer.deploy(PaymentProcessor, ADMIN_ADDRESS, DAI_ADDRESS);
+    const UBI_ADDRESS = process.env.UBI_ADDRESS || '';
+    await deployer.deploy(PaymentProcessor, ADMIN_ADDRESS, UBI_ADDRESS);
   }
 };

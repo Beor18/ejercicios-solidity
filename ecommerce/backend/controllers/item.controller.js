@@ -1,9 +1,9 @@
 const { Payment } = require("../models/Payment");
 
-const items = [
-  { id: 1, url: "http://UrlToDownloadItem1" },
-  { id: 2, url: "http://UrlToDownloadItem2" },
-];
+const items = {
+  '1': {id: 1, url: 'http://UrlToDownloadItem1'},
+  '2': {id: 2, url: 'http://UrlToDownloadItem2'},  
+};
 
 async function getPaymendId(req, res, next) {
   try {
@@ -12,7 +12,7 @@ async function getPaymendId(req, res, next) {
     const paymentData = await new Payment({
       id: paymentId,
       itemId: req.params.itemId,
-      paid: true,
+      paid: false,
     });
 
     paymentData.save();
